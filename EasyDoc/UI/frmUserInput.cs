@@ -1,7 +1,7 @@
 ﻿using System;
 using MaterialSkin.Controls;
 
-namespace DocEasy
+namespace EasyDoc
 {
     public partial class frmUserInput : MaterialForm
     {

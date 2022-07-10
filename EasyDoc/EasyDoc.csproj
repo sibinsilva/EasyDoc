@@ -80,6 +80,7 @@
     <Compile Include="clsEditPdf.cs" />
     <Compile Include="clsHelper.cs" />
     <Compile Include="clsMergeDocs.cs" />
+    <Compile Include="clsViewPdf.cs" />
     <Compile Include="UI\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>

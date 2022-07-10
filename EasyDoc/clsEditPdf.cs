@@ -3,7 +3,7 @@ using GroupDocs.Merger;
 using System;
 using System.IO;
 using MaterialSkin.Controls;
-namespace DocEasy
+namespace EasyDoc
 {
     internal static class clsEditPdf
     {

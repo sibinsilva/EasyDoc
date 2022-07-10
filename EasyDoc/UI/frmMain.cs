@@ -1,5 +1,5 @@
 ﻿using System;
-using DocEasy;
+using EasyDoc;
 using MaterialSkin;
 using MaterialSkin.Controls;
 
@@ -20,7 +20,14 @@ namespace EasyDoc
 
         private void btnMerge_Click_1(object sender, EventArgs e)
         {
-            clsMergeDocs.MergeDocument(lstSelection);
+            if (lstSelection.Items.Count > 1)
+            {
+                clsMergeDocs.MergeDocument(lstSelection);
+            }
+            else
+            {
+                MaterialMessageBox.Show("Select atleast two documents to merge");
+            }
         }
 
         private void btnUp_Click_1(object sender, EventArgs e)
@@ -66,6 +73,10 @@ namespace EasyDoc
                     MaterialMessageBox.Show("File is already password protected");
                 }
             }
+            else
+            {
+                MaterialMessageBox.Show("Select an item to start editing");
+            }
         }
 
         private void btnUnlockFile_Click(object sender, EventArgs e)
@@ -89,6 +100,10 @@ namespace EasyDoc
                     MaterialMessageBox.Show("File is not password protected");
                 }
             }
+            else
+            {
+                MaterialMessageBox.Show("Select an item to start editing");
+            }
             clsHelper.isUnlock = false;
         }
 
@@ -97,5 +112,16 @@ namespace EasyDoc
             clsHelper.CleanupUI(lstvEditPdf);
         }
 
+        private void lstSelection_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            clsHelper.listViewItem = lstSelection.SelectedItems[0];
+            clsHelper.DisplayMouseClickOptions(lstSelection,e);
+        }
+
+        private void lstvEditPdf_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            clsHelper.listViewItem = lstvEditPdf.SelectedItems[0];
+            clsHelper.DisplayMouseClickOptions(lstvEditPdf, e);
+        }
     }
 }

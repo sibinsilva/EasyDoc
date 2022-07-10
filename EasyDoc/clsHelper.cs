@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -7,12 +8,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DocEasy
+namespace EasyDoc
 {
     public static class clsHelper
     {
         public static string userPassword = null;
         public static bool isUnlock = false;
+        public static ListViewItem listViewItem = null;
         internal static void ChooseFiles(ListView lstSelection, bool bMultiSelect = false)
         {
             OpenFileDialog lstFiles = new OpenFileDialog();
@@ -99,6 +101,30 @@ namespace DocEasy
             {
                 return true;
             }
+        }
+
+        internal static void DisplayMouseClickOptions(ListView lstSelection, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                foreach (ListViewItem item in lstSelection.Items)
+                {
+                    if (item.Bounds.Contains(new Point(e.X, e.Y)))
+                    {
+                        lstSelection.ContextMenuStrip = new ContextMenuStrip();
+                        lstSelection.ContextMenuStrip.Items.Add("Preview");
+                        lstSelection.ContextMenuStrip.ItemClicked += ContextMenuStrip_ItemClicked;
+                        lstSelection.ContextMenuStrip.Show();
+                        break;
+                    }
+                }
+            }
+        }
+
+        private static void ContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            ToolStripItem item = e.ClickedItem;
+            clsViewPdf.PreviewPdf(listViewItem);
         }
     }
 }

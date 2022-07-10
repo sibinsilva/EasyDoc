@@ -113,6 +113,7 @@
             this.lstSelection.TabIndex = 11;
             this.lstSelection.UseCompatibleStateImageBehavior = false;
             this.lstSelection.View = System.Windows.Forms.View.List;
+            this.lstSelection.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstSelection_MouseClick);
             // 
             // btnDown
             // 
@@ -277,6 +278,7 @@
             this.lstvEditPdf.TabIndex = 14;
             this.lstvEditPdf.UseCompatibleStateImageBehavior = false;
             this.lstvEditPdf.View = System.Windows.Forms.View.List;
+            this.lstvEditPdf.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstvEditPdf_MouseClick);
             // 
             // btnSelectTab2
             // 

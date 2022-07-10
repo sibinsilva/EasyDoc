@@ -1,4 +1,4 @@
-﻿namespace DocEasy
+﻿namespace EasyDoc
 {
     partial class frmUserInput
     {
