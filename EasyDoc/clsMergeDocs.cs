@@ -62,9 +62,12 @@ namespace EasyDoc
                         }
                     }
                     targetPath = clsHelper.UserSaveFile();
-                    targetDoc.Save(targetPath);
-                    MessageBox.Show("File saved to :" + targetPath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    clsHelper.CleanupUI(lstSelection);
+                    if (string.IsNullOrEmpty(targetPath))
+                    {
+                        targetDoc.Save(targetPath);
+                        MessageBox.Show("File saved to :" + targetPath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clsHelper.CleanupUI(lstSelection);
+                    }
                 }
             }
             catch (Exception ex)
@@ -83,10 +86,9 @@ namespace EasyDoc
                     files[i] = lstSelection.Items[i].ImageKey;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return files;
         }

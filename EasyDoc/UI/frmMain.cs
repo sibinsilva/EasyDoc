@@ -13,7 +13,7 @@ namespace EasyDoc
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.LightBlue500, Accent.LightGreen200, TextShade.WHITE);
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue600, Primary.Blue600, Primary.LightBlue500, Accent.LightBlue200, TextShade.WHITE);
             btnUp.Text = char.ConvertFromUtf32(8593);
             btnDown.Text = char.ConvertFromUtf32(8595);
         }
