@@ -3,6 +3,8 @@ using GroupDocs.Merger;
 using System;
 using System.IO;
 using MaterialSkin.Controls;
+using System.Windows.Forms;
+
 namespace EasyDoc
 {
     internal static class clsEditPdf
@@ -18,7 +20,11 @@ namespace EasyDoc
                 {
                     merger.AddPassword(addOptions);
                     var newPath = clsHelper.UserSaveFile(fileName);
-                    merger.Save(newPath);
+                    if (!string.IsNullOrEmpty(newPath))
+                    {
+                        merger.Save(newPath);
+                        MessageBox.Show("File saved to :" + newPath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
 			catch (Exception)
@@ -40,13 +46,18 @@ namespace EasyDoc
                 {
                     merger.RemovePassword();
                     string newPath = clsHelper.UserSaveFile(fileName);
-                    merger.Save(newPath);
-                    result = true;
+                    if (!string.IsNullOrEmpty(newPath))
+                    {
+                        merger.Save(newPath);
+                        result = true;
+                        MessageBox.Show("File saved to :" + newPath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    
                 }
             }
             catch (Exception)
             {
-                MaterialMessageBox.Show("Password does not match");
+                MessageBox.Show("Password does not match", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return result;
         }
