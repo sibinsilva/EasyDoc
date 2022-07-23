@@ -65,36 +65,11 @@ namespace EasyDoc
             var input = password;
             ErrorMessage = string.Empty;
 
-            var hasNumber = new Regex(@"[0-9]+");
-            var hasUpperChar = new Regex(@"[A-Z]+");
-            var hasMiniMaxChars = new Regex(@".{8,15}");
-            var hasLowerChar = new Regex(@"[a-z]+");
-            var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
-
-            if (!hasLowerChar.IsMatch(input))
+            var hasMiniMaxChars = new Regex(@".{4,25}");
+            
+            if (!hasMiniMaxChars.IsMatch(input))
             {
-                ErrorMessage = "Password should contain At least one lower case letter";
-                return false;
-            }
-            else if (!hasUpperChar.IsMatch(input))
-            {
-                ErrorMessage = "Password should contain At least one upper case letter";
-                return false;
-            }
-            else if (!hasMiniMaxChars.IsMatch(input))
-            {
-                ErrorMessage = "Password should be more than 8 characters";
-                return false;
-            }
-            else if (!hasNumber.IsMatch(input))
-            {
-                ErrorMessage = "Password should contain At least one numeric value";
-                return false;
-            }
-
-            else if (!hasSymbols.IsMatch(input))
-            {
-                ErrorMessage = "Password should contain At least one special case characters";
+                ErrorMessage = "Password should be more than 4 characters";
                 return false;
             }
             else
